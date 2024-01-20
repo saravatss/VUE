@@ -2,11 +2,16 @@ const { ref } = Vue;
 
 export const ProductsList = {
     template: `
-        <div>jfjfj</div>
+        <v-product-card 
+            v-for="product in products"
+            :title="product.title"
+            :image="product.thumbnail"
+            :price="product.price"
+        />
     `,
     setup () {
-        const products = [];
-        
+        const products = ref([]);
+
         fetch('https://dummyjson.com/products')
         .then(res => res.json())
         .then(function (data) {
@@ -15,6 +20,6 @@ export const ProductsList = {
 
         return {
             products
-        }
+        };
     }
-};
+}
