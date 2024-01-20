@@ -1,28 +1,20 @@
-const { createApp, ref } = Vue;
+import { ProductsList } from './components/index.js';
 
-// tempate -- тело
-// setup -- настройки js
+const { createApp } = Vue;
 
-const app = createApp({
+const Root = {
     template: `
-        <button @click="onClick">
-            +
-        </button>
 
-        <div v-show="isVisible">hfjdk</div>
+
+        <v-products-list/>
     `,
     setup () {
-        const isVisible = ref(false);
-
-        function onClick () {
-            isVisible.value = !isVisible.value;
-        }
-
-        return {
-            isVisible,
-            onClick
-        }
+        
     }
-});
+};
+
+const app = createApp(Root);
+
+app.component('VProductsList', ProductsList);
 
 app.mount('#app');
